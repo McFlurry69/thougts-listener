@@ -13,6 +13,11 @@ jobs:
       - name: print list of files
         run: ls
       - name: check dotnet
-        run: dotnet --version
+        run: dotnet build
       - name: check npm
         run: npm -v
+      - name: print list of files ofter build
+        run: ls .\ThoughtsListener.Api\ -R
+
+
+        
