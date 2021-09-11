@@ -17,7 +17,7 @@ jobs:
       - name: check npm
         run: npm -v
       - name: print list of files ofter build
-        run: ls .\ThoughtsListener.Api\ -R
+        run: ls ThoughtsListener.Api/ -R
 
 
         
