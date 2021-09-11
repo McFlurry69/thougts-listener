@@ -6,7 +6,13 @@ jobs:
     name: Build app
     runs-on: ubuntu-latest
     steps:
+      - name: Pull repo
+        uses: actions/checkout@v2
       - name: print current dir
         run: pwd
       - name: print list of files
         run: ls
+      -name: check dotnet
+        run: dotnet --version
+      -name: check npm
+        run: npm -v
