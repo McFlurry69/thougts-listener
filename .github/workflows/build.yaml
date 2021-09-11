@@ -12,7 +12,7 @@ jobs:
         run: pwd
       - name: print list of files
         run: ls
-      -name: check dotnet
+      - name: check dotnet
         run: dotnet --version
-      -name: check npm
+      - name: check npm
         run: npm -v
