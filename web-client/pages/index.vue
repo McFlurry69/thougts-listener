@@ -2,9 +2,9 @@
   <v-row justify="center" align="center">
     <v-col cols="12" sm="8" md="6">
       <v-card>
-        <v-card-title class="headline">
-          Hi
-        </v-card-title>
+        <div>
+          <v-file-input accept="image/*" v-on:change="handelFile"></v-file-input>
+        </div>
         <v-card-text>
           There
           <p>{{message}}</p>
@@ -56,6 +56,13 @@ export default {
     ...mapActions("posts", ["createPosts"]),
     async savePost(){
       await this.createPosts({post: {article: this.post.article, bodytext: this.post.bodytext}})
+    },
+    async handelFile(file){
+      if(!file) return;
+      const form = new FormData();
+      form.append("image", file);
+      const result = await Axios.post("http://localhost:5000/api/images", form);
+      console.log("Result ", result);
     }
   },
   async fetch(){

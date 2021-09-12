@@ -1,17 +1,18 @@
 <template>
-  <section id="feed">
+  <section>
     <feed>
-      <slot />
+      <slot/>
     </feed>
   </section>
 </template>
 
 <script>
-  export default {
-    name: 'HomeAbout',
+import Feed from "@/components/Feed";
 
-    components: {
-      Feed: () => import('@/components/Feed'),
-    },
-  }
+export default {
+  name: 'HomeAbout',
+  components: {
+    Feed
+  },
+}
 </script>

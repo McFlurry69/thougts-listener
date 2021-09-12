@@ -1,27 +1,31 @@
 <template>
-  <div id="home">
-    <articles>
-      <banner />
-    </articles>
+  <div>
+ <Articles>
+      <Banner />
+    </Articles>
+<!--
+    <About />
 
-    <about />
+    <Subscribe />
 
-    <subscribe />
-
-    <social />
+    <Social />-->
   </div>
 </template>
 
 <script>
-  export default {
-    name: 'Home',
+import Articles from "@/components/home/Articles";
+import Banner from "@/components/home/Banner";
+import About from "@/components/home/About";
+import Social from "@/components/home/Social";
+import Subscribe from "@/components/home/Subscribe";
 
+  export default {
     components: {
-      About: () => import('@/components/home/About'),
-      Articles: () => import('@/components/home/Articles'),
-      Banner: () => import('@/components/home/Banner'),
-      Social: () => import('@/components/home/Social'),
-      Subscribe: () => import('@/components/home/Subscribe'),
-    },
+      Articles,
+      Banner,
+      About,
+      Subscribe,
+      Social
+    }
   }
 </script>

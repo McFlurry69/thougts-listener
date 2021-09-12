@@ -56,12 +56,13 @@
   import {
     mapState,
   } from 'vuex'
+  import FeedCard from "@/components/FeedCard";
 
   export default {
     name: 'Feed',
 
     components: {
-      FeedCard: () => import('@/components/FeedCard'),
+      FeedCard
     },
 
     data: () => ({

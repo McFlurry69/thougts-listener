@@ -1,10 +1,6 @@
 <template>
-  <v-container
-    id="about"
-    tag="section"
-  >
+  <v-container>
     <base-subheading>About Us</base-subheading>
-
     <p>
       Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc ut tortor tellus. Donec maximus curs us pulvinar.
       Proin vehicula eros mauris, sit amet rutrum libero vestibulum ac. Morbi ullamcorper eu lacus vulputate consect.
