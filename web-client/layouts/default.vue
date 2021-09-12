@@ -1,17 +1,10 @@
 <template>
-  <v-app dark>
+  <v-app light>
     <v-main>
       <v-container>
         <Nuxt />
       </v-container>
     </v-main>
-      <span>&copy; {{ new Date().getFullYear() }}</span>
+      <span>{{ new Date().getFullYear() }}</span>
   </v-app>
 </template>
-
-<script>
-export default {
-  data () {
-  }
-}
-</script>
