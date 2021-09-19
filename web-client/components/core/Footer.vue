@@ -7,7 +7,7 @@
     <v-container class="mx-auto">
       <v-row>
         <v-col cols="9">
-          <base-btn
+          <v-btn
             v-for="(item, i) in items"
             :key="i"
             :href="item.href"
@@ -17,19 +17,19 @@
             target="_blank"
           >
             <v-icon v-text="item.icon" />
-          </base-btn>
+          </v-btn>
         </v-col>
 
         <v-spacer />
 
-        <base-btn
+        <v-btn
           class="mr-0"
           square
           title="Go to top"
           @click="$vuetify.goTo(0)"
         >
           <v-icon>mdi-chevron-up</v-icon>
-        </base-btn>
+        </v-btn>
       </v-row>
     </v-container>
   </v-footer>

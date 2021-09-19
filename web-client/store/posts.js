@@ -17,11 +17,12 @@ export const mutations = {
 
 export const actions = {
   async fetchPosts ({commit}) {
-    const posts = (await Axios.get("http://localhost:5000/api/posts")).data;
+    const posts = await this.$axios.$get("http://localhost:5000/api/posts");
+    console.log(posts);
     commit("setPosts", {posts});
   },
-  async createPosts ({commit, dispatch}, {post}) {
-    await Axios.post("http://localhost:5000/api/posts", post);
+  async createPost ({commit, dispatch}, {post}) {
+    await this.$axios.$post("http://localhost:5000/api/posts", post);
     await dispatch("fetchPosts")
   }
 }

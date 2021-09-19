@@ -1,76 +1,49 @@
 <template>
-  <v-col
-    cols="12"
-    :md="size === 2 ? 6 : size === 3 ? 4 : undefined"
-  >
-    <base-card
-      :height="value.prominent ? 450 : 350"
-      color="grey lighten-1"
-      dark
-      href="#!"
-    >
-      <v-img
-        :src="require(`@/assets/articles/${value.hero}`)"
-        height="100%"
-        gradient="rgba(0, 0, 0, .42), rgba(0, 0, 0, .42)"
-      >
-        <v-row
-          v-if="!value.prominent"
-          class="fill-height text-right ma-0"
-        >
+  <v-col cols="12" :md="size === 2 ? 6 : size === 3 ? 4 : undefined">
+    <v-card :height="value.prominent ? 450 : 350" color="grey lighten-1" dark href="#!">
+      <v-img :src="`http://localhost:5000/api/images/${value.headerImage}`" height="100%"
+             gradient="rgba(0, 0, 0, .42), rgba(0, 0, 0, .42)">
+        <v-row class="fill-height ma-0">
           <v-col cols="12">
-            <v-chip
-              label
-              class="mx-0 mb-2 text-uppercase"
-              color="grey darken-3"
-              text-color="white"
-              small
-              @click.stop=""
-            >
-              {{ value.category }}
+            <v-row>
+              <v-card-title class="text-h3 font-weight-bold mb-2">
+                {{ value.title }}
+              </v-card-title>
+            </v-row>
+            <v-row>
+            <v-card-subtitle>
+              {{ value.subTitle }}
+            </v-card-subtitle>
+              </v-row>
+
+            <v-row>
+            <v-chip v-for="cat in value.categories" :key="cat" label class="mx-3 b-2 text-uppercase align-self-end"
+                    color="grey darken-3" text-color="white" small>
+              <span>{{ cat }}</span>
             </v-chip>
-
-            <h3 class="title font-weight-bold mb-2">
-              {{ value.title }}
-            </h3>
-
-            <div class="caption">
-              {{ value.author }}<br>Date
-            </div>
-          </v-col>
-
-          <v-col align-self="end">
-            <v-chip
-              class="text-uppercase ma-0"
-              color="primary"
-              label
-              small
-              @click.stop=""
-            >
-              Read More
-            </v-chip>
+              </v-row>
           </v-col>
         </v-row>
       </v-img>
-    </base-card>
+    </v-card>
   </v-col>
 </template>
 
 <script>
-  export default {
-    name: 'FeedCard',
+export default {
+  name: 'FeedCard',
 
-    props: {
-      size: {
-        type: Number,
-        required: true,
-      },
-      value: {
-        type: Object,
-        default: () => ({}),
-      },
+  props: {
+    size: {
+      type: Number,
+      required: true,
     },
-  }
+    value: {
+      type: Object,
+      default: () => ({}),
+    },
+  },
+}
 </script>
 
 <style>

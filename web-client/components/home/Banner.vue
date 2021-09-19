@@ -1,5 +1,5 @@
 <template>
-  <base-card dark>
+  <v-card dark>
     <v-img
       :src="require('@/assets/articles/blurcamera.jpg')"
       class="grey lighten-2"
@@ -32,7 +32,7 @@
         </v-col>
       </v-row>
     </v-img>
-  </base-card>
+  </v-card>
 </template>
 
 <script>

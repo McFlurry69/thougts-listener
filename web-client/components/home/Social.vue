@@ -29,13 +29,16 @@
 </template>
 
 <script>
+import Instagram from "@/components/Instagram";
+import NewestPosts from "@/components/NewestPosts";
+import Tags from "@/components/Tags";
   export default {
     name: 'HomeSocial',
 
     components: {
-      NewestPosts: () => import('@/components/NewestPosts'),
-      Instagram: () => import('@/components/Instagram'),
-      Tags: () => import('@/components/Tags'),
+      Instagram,
+      NewestPosts,
+      Tags
     },
   }
 </script>

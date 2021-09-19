@@ -1,73 +1,32 @@
 <template>
-  <v-app-bar
-    app
-    flat
-  >
-    <v-app-bar-nav-icon
-      class="hidden-md-and-up"
-      @click="toggleDrawer"
-    />
+  <v-app-bar app flat>
+    <v-app-bar-nav-icon class="hidden-md-and-up"/>
 
     <v-container class="mx-auto py-0">
       <v-row align="center">
-        <v-img
-          :src="require('@/assets/logo.png')"
-          class="mr-5"
-          contain
-          height="48"
-          width="48"
-          max-width="48"
-          @click="$vuetify.goTo(0)"
-        />
+        <nuxt-link to="/home" class="d-flex">
+          <v-img :src="require('@/assets/logo.png')" class="mr-5" contain height="48" width="48" max-width="48"/>
+          <h1>The Rooms</h1>
+        </nuxt-link>
 
-        <v-btn
-          v-for="(link, i) in links"
-          :key="i"
-          v-bind="link"
-          class="hidden-sm-and-down"
-          text
-          @click="onClick($event, link)"
-        >
-          {{ link.text }}
-        </v-btn>
+        <v-spacer/>
 
-        <v-spacer />
+        <nuxt-link to="Create">
+          <v-btn depressed class="mr-8">Create post</v-btn>
+        </nuxt-link>
+        <nuxt-link to="Home">
+          <v-btn depressed class="mr-8">Home</v-btn>
+        </nuxt-link>
 
-        <v-text-field
-          append-icon="mdi-magnify"
-          flat
-          hide-details
-          solo-inverted
-          style="max-width: 300px;"
-        />
+        <v-text-field append-icon="mdi-magnify" flat hide-details solo-inverted style="max-width: 300px;"/>
       </v-row>
     </v-container>
   </v-app-bar>
 </template>
 
 <script>
-  // Utilities
-  import {
-    mapGetters,
-    mapMutations,
-  } from 'vuex'
 
-  export default {
-    name: 'CoreAppBar',
-
-    computed: {
-      ...mapGetters(['links']),
-    },
-
-    methods: {
-      ...mapMutations(['toggleDrawer']),
-      onClick (e, item) {
-        e.stopPropagation()
-
-        if (item.to || !item.href) return
-
-        this.$vuetify.goTo(item.href.endsWith('!') ? 0 : item.href)
-      },
-    },
-  }
+export default {
+  name: 'CoreAppBar',
+}
 </script>

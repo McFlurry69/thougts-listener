@@ -3,7 +3,7 @@
     id="subscribe"
     tag="section"
   >
-    <base-card
+    <v-card
       color="rgba(203, 170, 92, 0.51)"
       class="pa-3"
     >
@@ -13,9 +13,9 @@
             cols="12"
             md="5"
           >
-            <base-subheading class="mb-3">
+            <v-subheader class="mb-3">
               Subscribe
-            </base-subheading>
+            </v-subheader>
 
             <p>
               Enter your email address to subscribe to this blog
@@ -50,7 +50,7 @@
             md="6"
             offset-md="1"
           >
-            <base-subheading>Contact</base-subheading>
+            <v-subheader>Contact</v-subheader>
 
             <v-list class="transparent">
               <v-list-item>
@@ -109,7 +109,7 @@
           </v-col>
         </v-row>
       </v-container>
-    </base-card>
+    </v-card>
   </v-container>
 </template>
 

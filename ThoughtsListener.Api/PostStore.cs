@@ -14,6 +14,6 @@ namespace ThoughtsListener.Api
 
         public IEnumerable<Post> getAll => _posts;
 
-        public void Add(Post post) => _posts.Add(new Post{Article = post.Article, BodyText = post.BodyText, Id = _posts.Count + 1});
+        public void Add(Post post) => _posts.Add(new Post{Title = post.Title, SubTitle = post.SubTitle, ArticleText = post.ArticleText, Id = _posts.Count + 1, HeaderImage = post.HeaderImage, Categories = post.Categories});
     }
 }

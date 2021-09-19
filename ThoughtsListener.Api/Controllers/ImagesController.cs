@@ -4,6 +4,7 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Net.Http.Headers;
 
 namespace ThoughtsListener.Api.Controllers
 {
@@ -16,7 +17,15 @@ namespace ThoughtsListener.Api.Controllers
         {
             _env = env;
         }
-        
+
+        [HttpGet("{image}")]
+        public IActionResult GetImage(string image)
+        {
+            var mime = image.Split('.').Last();
+            var savePath = Path.Combine(_env.WebRootPath, image);
+            return new FileStreamResult(new FileStream(savePath, FileMode.Open, FileAccess.Read), "image/*");
+        }
+
         [HttpPost]
         public async Task<IActionResult> UploadImage(IFormFile image)
         {
@@ -29,7 +38,7 @@ namespace ThoughtsListener.Api.Controllers
                 await image.CopyToAsync(fileStream);
             }
             
-            return Ok();
+            return Ok(fileName);
         }
     }
 }
