@@ -27,6 +27,15 @@
               <v-btn>
                 <v-icon>mdi-format-underline</v-icon>
               </v-btn>
+              <v-btn v-on:click="$refs.uploaderIm.click();" class="px-0 py-0">
+                <v-icon>mdi-arrow-up-bold-box-outline</v-icon>
+              </v-btn>
+              <v-btn v-on:click="$refs.uploaderVid.click();" class="px-0 py-0">
+                <v-icon>mdi-arrow-up-bold-box-outline</v-icon>
+              </v-btn>
+              <input ref="uploaderIm" v-show="false" type="file" accept="image/*" v-on:change="handleFile"/>
+              <input ref="uploaderVid" v-show="false" type="file" accept="video/*" v-on:change="handleFile"/>
+
             </v-btn-toggle>
           </v-row>
 
@@ -46,7 +55,9 @@
 <script>
 import {Editor, EditorContent} from '@tiptap/vue-2'
 import StarterKit from '@tiptap/starter-kit'
-import {mapState, mapMutations} from "vuex";
+import {mapState, mapMutations, mapActions} from "vuex";
+import Image from '@tiptap/extension-image'
+import {FILE_TYPE} from "@/data/enum.js";
 
 export default {
   name: "Editor",
@@ -61,15 +72,35 @@ export default {
   },
   computed: {
     ...mapState('posts', ['posts']),
+    ...mapState("images", ["uploadPromise"]),
+    uploadFileType: () => FILE_TYPE
   },
   methods: {
+    ...mapMutations('images', ['setType']),
     ...mapMutations('posts', ["setPosts"]),
-    ...mapMutations('textEditor', ['setTextContent'])
+    ...mapMutations('textEditor', ['setTextContent']),
+    ...mapActions("images", ["createImageTask"]),
+    async handleFile(event) {
+      const file = event.target.files[0];
+      if (!file) return;
+      const form = new FormData();
+      form.append(FILE_TYPE, file);
+      this.createImageTask({form});
+
+      if (!this.uploadPromise) {
+        return;
+      }
+
+      const result = await this.uploadPromise;
+      console.log(result);
+      this.editor.chain().focus().setImage({src: `http://localhost:5000/api/${FILE_TYPE}/` + result}).run()
+    }
   },
   async fetch() {
     this.editor = new Editor({
       extensions: [
         StarterKit,
+        Image,
       ],
       editorProps: {
         attributes: {
@@ -91,8 +122,17 @@ export default {
 
 <style lang="scss">
 .ProseMirror {
+  padding-top: 8px;
+  padding-bottom: 50px;
+
   p {
-    margin: 1em 0;
+    margin: 0;
+  }
+
+  img {
+    width: 600px;
+    display: block;
+    margin: auto;
   }
 }
 </style>

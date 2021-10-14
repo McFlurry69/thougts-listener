@@ -17,7 +17,7 @@ export const mutations = {
 
 export const actions = {
   async fetchMessage ({commit, dispatch}) {
-    const message = await this.$axios.$get("http://localhost:5000/api/home");
+    const message = await this.$axios.$get("/api/home");
     commit("setMutation", message);
     await dispatch("posts/fetchPosts");
   }
