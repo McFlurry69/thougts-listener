@@ -54,7 +54,7 @@ export default {
   },
   data: initState,
   computed: {
-    ...mapState("images", ["uploadPromise"]),
+    ...mapState("files", ["uploadPromise"]),
     ...mapState("categories", ["categories"]),
   },
   methods: {
@@ -63,7 +63,7 @@ export default {
       if(!file) return;
       const form = new FormData();
       form.append("image", file);
-      this.createImageTask({form})
+      this.createFileUploadTask({form})
     },
     reset(){
       Object.assign(this.$data, initState());
@@ -78,10 +78,10 @@ export default {
       this.resetImages();
       this.reset();
     },
-    ...mapActions("images", ["createImageTask"]),
+    ...mapActions("files", ["createFileUploadTask"]),
     ...mapActions("posts", ["createPost"]),
     ...mapActions("categories", ["fetchCategories"]),
-    ...mapMutations("images", {resetImages: 'reset'})
+    ...mapMutations("files", {resetImages: 'reset'})
   },
   async fetch(){
     await this.$store.dispatch("categories/fetchCategories");

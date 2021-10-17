@@ -12,6 +12,7 @@
     "@nuxtjs/axios": "^5.13.6",
     "@tiptap/extension-image": "^2.0.0-beta.15",
     "@tiptap/extension-text": "^2.0.0-beta.13",
+    "@tiptap/extension-text-align": "^2.0.0-beta.23",
     "@tiptap/starter-kit": "^2.0.0-beta.106",
     "@tiptap/vue-2": "^2.0.0-beta.52",
     "core-js": "^3.15.1",
@@ -20,6 +21,7 @@
   },
   "devDependencies": {
     "@nuxtjs/vuetify": "^1.12.1",
+    "@tiptap/extension-underline": "^2.0.0-beta.16",
     "vuex": "^3.6.2"
   }
 }

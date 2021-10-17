@@ -14,7 +14,6 @@ export const mutations = {
   }
 }
 
-
 export const getters = {
   getTextContent(state){
     return state.textContent;
